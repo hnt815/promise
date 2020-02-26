@@ -5,6 +5,29 @@
   <title>6.中断Promise链</title>
 </head>
 <body>
+<script>
+  /*
+    中断promise链?
+    1. 当使用promise的then链式调用时, 在中间中断, 不再调用后面的回调函数
+    2. 办法: 在回调函数中返回一个pending状态的promise对象
+  */
 
+  new Promise((resolve, reject) => {
+    resolve(1)
+  }).then(
+    value => {
+      console.log('onResolved1()', value)
+      return new Promise(() => {}) // 返回一个pending的promise  中断promise链
+    },
+  ).then(
+    value => {
+      console.log('onResolved2()', value)
+    },
+    reason => {
+      console.log('onResolved2()', reason)
+    },
+  )
+
+</script>
 </body>
 </html>

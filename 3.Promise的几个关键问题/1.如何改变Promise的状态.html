@@ -8,9 +8,9 @@
 <script>
   /*
     如何改变promise的状态?
-    promise的内部维护这三个状态,分别是pendding,revolved,rejected状态,
-    当执行resolve(value)时,状态会从pennding变为resolved
-    当执行reject(reason)或者抛出Error时,状态会从pendding变为rejected
+    promise的内部维护这三个状态,分别是pending,revolved(官方叫做fulfilled),rejected状态,
+    当执行resolve(value)时,状态会从pending变为resolved
+    当执行reject(reason)或者抛出Error时,状态会从pending变为rejected
     注意: 同一promise的状态仅会改变一次,如果指定多个成功或失败的回调,会执行所有的成功或失败回调
   */
 
