@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>2.回调函数的类型</title>
+</head>
+<body>
+
+<script type="text/javascript">
+  /*
+    同步回调
+      立即执行,全部执行完才结束,不会放到回调队里中
+      比如: 数组遍历的相关回调函数/Promise的executor函数
+    异步回调
+      不会立即执行,会放到回调队里中,将来执行
+      比如: 定时器回调/ajax回调/Promise的成功或失败回调
+   */
+
+  /*
+    同步回调
+   */
+  const arr = [1,2,3]
+  arr.forEach(item => console.log(item))
+  console.log("forEach()之后")
+
+  /*
+    异步回调
+   */
+  setTimeout(()=>{
+    console.log("timeout回调")
+  },0)
+  console.log('setTimeout()之后')
+
+</script>
+
+</body>
+</html>
