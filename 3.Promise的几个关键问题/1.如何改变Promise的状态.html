@@ -5,6 +5,48 @@
   <title>1.如何改变Promise的状态</title>
 </head>
 <body>
+<script>
+  /*
+    如何改变promise的状态?
+    promise的内部维护这三个状态,分别是pendding,revolved,rejected状态,
+    当执行resolve(value)时,状态会从pennding变为resolved
+    当执行reject(reason)或者抛出Error时,状态会从pendding变为rejected
+    注意: 同一promise的状态仅会改变一次,如果指定多个成功或失败的回调,会执行所有的成功或失败回调
+  */
+
+  const p = new Promise((resolve, reject) => {
+    // resolve(1) // promise变为resolved的成功状态
+    // reject(2) // promise变为rejected的失败状态
+    // throw new Error('出错了') // 抛出异常, promise变为rejected失败状态, reason为抛出的error
+    throw 3 // 抛出异常, promse变为rejected失败状态, reason为抛出的3
+  })
+  p.then(
+    value => {
+      console.log('value1', value)
+    },
+    reason => {
+      console.log('reason1', reason)
+    }
+  )
+
+  p.then(
+    value => {
+      console.log('value2', value)
+    },
+    reason => {
+      console.log('reason2', reason)
+    }
+  )
+
+  p.then(
+    value => {
+      console.log('value3', value)
+    },
+    reason => {
+      console.log('reason3', reason)
+    }
+  )
+</script>
 
 </body>
 </html>
