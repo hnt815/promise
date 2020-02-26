@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>测试手写Promise</title>
+</head>
+<body>
+<!-- 引入手写Promise-->
+<script src="./3.Promise_then&catch方法.js"></script>
+
+<script>
+  new Promise(((resolve, reject) => {
+    setTimeout(() => {
+      // resolve(1)
+      reject(2)
+    },1000)
+  })).then(
+    value => {
+      console.log("onResolved1", value)
+    },
+    // reason => {
+    //   console.log("onRejected1", reason)
+    // }
+  ).then(
+    value => {
+      console.log("onResolved2", value)
+    },
+    // reason => {
+    //   console.log("onRejected2", reason)
+    // }
+  ).catch(reason => {
+    console.log('catch', reason)
+  }).then(
+    value => {
+      console.log("onResolved3", value)
+    },
+    reason => {
+      console.log("onRejected3", reason)
+    }
+  )
+
+</script>
+</body>
+</html>
